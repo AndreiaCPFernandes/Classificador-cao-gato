@@ -5,7 +5,8 @@ import numpy as np
 import os
 
 app = Flask(__name__)
-model = load_model('modelo.h5')  # Certifique-se de que o arquivo .h5 esteja no repositório
+modelo = modelo_de_carga('templates/meu_modelo_gato_cachorro.pkl')
+
 
 def prepare_image(img_path):
     img = image.load_img(img_path, target_size=(150, 150))  # Ajuste o tamanho se necessário
