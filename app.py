@@ -5,13 +5,13 @@ import numpy as np
 import os
 
 app = Flask(__name__)
-model = load_model('modelo.h5')  # Substitua pelo nome do seu arquivo .h5 se for diferente
+model = load_model('modelo.h5')  # Certifique-se de que o arquivo .h5 esteja no repositório
 
 def prepare_image(img_path):
-    img = image.load_img(img_path, target_size=(150, 150))  # Ajuste o tamanho conforme o modelo foi treinado
+    img = image.load_img(img_path, target_size=(150, 150))  # Ajuste o tamanho se necessário
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
-    img_array /= 255.0
+    img_array = img_array / 255.0
     return img_array
 
 @app.route("/", methods=["GET", "POST"])
